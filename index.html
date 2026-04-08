@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord</title>
+    <style>
+        /* 디스코드 기본 다크 테마 배경 */
+        body {
+            background-color: #313338;
+            color: #dbdee1;
+            font-family: 'gg sans', 'Noto Sans KR', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 메시지 래퍼 설정 (실제 디스코드 비율) */
+        .message-container {
+            display: flex;
+            padding: 2px 48px 2px 72px;
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            background-color: #313338;
+        }
+
+        .message-container:hover {
+            background-color: #2e3035; /* 마우스 오버 시 디스코드 특유의 배경색 변화 */
+        }
+
+        /* 프로필 사진 */
+        .avatar {
+            position: absolute;
+            left: 16px;
+            margin-top: 2px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            /* 첨부해주신 프사 느낌의 임시 이미지 (원하는 이미지 링크로 변경하세요) */
+            background-image: url('https://th.bing.com/th/id/OIP.M-zahM1e8AossJEkjwVoJwAAAA?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3'); 
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        /* 닉네임 & 시간 */
+        .header {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .username {
+            color: #d1a538; /* 첨부된 이미지의 닉네임 색상 */
+            font-size: 1rem;
+            font-weight: 500;
+            margin-right: 0.25rem;
+            cursor: pointer;
+        }
+
+        .username:hover {
+            text-decoration: underline;
+        }
+
+        .timestamp {
+            color: #949ba4;
+            font-size: 0.75rem;
+            margin-left: 4px;
+        }
+
+        /* 메시지 본문 */
+        .content {
+            color: #dbdee1;
+            font-size: 1rem;
+            line-height: 1.375rem;
+            white-space: pre-wrap;
+        }
+
+        /* 가짜 더보기 버튼 */
+        .show-more {
+            color: #dbdee1;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .show-more:hover {
+            text-decoration: underline;
+        }
+
+        /* 낚시 성공 시 나타날 콘텐츠 */
+        .hidden-troll {
+            display: none; /* 처음엔 숨김 */
+            margin-top: 15px;
+            animation: fadeInOut 0.5s ease-in-out forwards;
+        }
+
+        .hidden-troll p {
+            color: #f23f42; /* 디스코드 레드 */
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hidden-troll img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="message-container">
+        <div class="avatar"></div>
+        
+        <div>
+            <div class="header">
+                <span class="username">패투</span>
+                <span class="timestamp">어제 오후 5:16</span>
+            </div>
+            
+            <div class="content" id="message-content">ㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+ㄷㄷ
+수연아 조심해
+3명 만나면..</div>
+            
+            <div class="show-more" id="show-more-btn">...더보기</div>
+
+            <div class="hidden-troll" id="hidden-troll">
+                <p>ㄹㅇㅋㅋ</p>
+                <img src="https://media.giphy.com/media/Ju7l5y9osyymQ/giphy.gif" alt="troll">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 자바스크립트로 클릭 이벤트 제어
+        const showMoreBtn = document.getElementById('show-more-btn');
+        const hiddenTroll = document.getElementById('hidden-troll');
+
+        showMoreBtn.addEventListener('click', function() {
+            // 버튼 숨기고
+            showMoreBtn.style.display = 'none';
+            // 함정 보여주기
+            hiddenTroll.style.display = 'block';
+            
+        });
+    </script>
+
+</body>
+</html>
